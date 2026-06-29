@@ -8,5 +8,12 @@ export const routes: Routes = [
         (m) => m.WalletListPageComponent
       )
   },
+  {
+    path: 'admin/wallets/new',
+    loadComponent: () =>
+      import('./features/wallet-management/pages/wallet-create-page/wallet-create-page.component').then(
+        (m) => m.WalletCreatePageComponent
+      )
+  },
   { path: '', redirectTo: 'admin/wallets', pathMatch: 'full' }
 ];
