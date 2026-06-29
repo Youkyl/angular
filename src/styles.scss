@@ -1,0 +1,88 @@
+:root {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-success: #1a7f37;
+  --color-danger: #c92a2a;
+  --color-border: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--color-text);
+}
+
+button {
+  cursor: pointer;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+input,
+select,
+textarea {
+  border: 1px solid var(--color-text);
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--color-text);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.border-success {
+  border-color: var(--color-success);
+}
+
+.border-danger {
+  border-color: var(--color-danger);
+}
