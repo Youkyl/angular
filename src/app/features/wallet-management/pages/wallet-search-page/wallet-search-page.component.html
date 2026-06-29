@@ -1,0 +1,55 @@
+<h1>Rechercher un client</h1>
+
+<form [formGroup]="searchForm" (ngSubmit)="search()">
+  <p>
+    <label for="phone">Téléphone</label><br />
+    <input id="phone" type="text" formControlName="phone" placeholder="771234567" />
+    <button type="submit" [disabled]="searching()">Rechercher</button>
+  </p>
+  @if (searchForm.controls.phone.invalid && searchForm.controls.phone.touched) {
+    <p class="text-danger">Numéro invalide (format attendu : 771234567).</p>
+  }
+</form>
+
+@if (searching()) {
+  <p>Recherche...</p>
+} @else if (wallet()) {
+  @let found = wallet()!;
+
+  <h2>Portefeuille</h2>
+  <p>
+    Téléphone : {{ found.phone | phoneFormat }}<br />
+    Email : {{ found.email }}<br />
+    Solde : {{ found.balance | xof }}<br />
+    Code : {{ found.code }}
+  </p>
+
+  <h2>Dépôt</h2>
+  <form [formGroup]="depositForm" (ngSubmit)="deposit()">
+    <p>
+      <label for="depositAmount">Montant</label><br />
+      <input id="depositAmount" type="number" min="1" formControlName="amount" />
+    </p>
+    <p>
+      <label for="paymentMethod">Méthode de paiement</label><br />
+      <select id="paymentMethod" formControlName="paymentMethod">
+        <option value="WALLET_TARGET">Portefeuille</option>
+        <option value="CREDIT_CARD">Carte bancaire</option>
+      </select>
+    </p>
+    <p>
+      <button type="submit" [disabled]="operating()">Déposer</button>
+    </p>
+  </form>
+
+  <h2>Retrait</h2>
+  <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+    <p>
+      <label for="withdrawAmount">Montant</label><br />
+      <input id="withdrawAmount" type="number" min="1" formControlName="amount" />
+    </p>
+    <p>
+      <button type="submit" [disabled]="operating()">Retirer</button>
+    </p>
+  </form>
+}
