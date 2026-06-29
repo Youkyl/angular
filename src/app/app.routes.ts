@@ -22,5 +22,12 @@ export const routes: Routes = [
         (m) => m.WalletSearchPageComponent
       )
   },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./shared/session/pages/client-login-page/client-login-page.component').then(
+        (m) => m.ClientLoginPageComponent
+      )
+  },
   { path: '', redirectTo: 'admin/wallets', pathMatch: 'full' }
 ];

@@ -1,0 +1,15 @@
+<h1>Connexion client</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <p>
+    <label for="phone">Téléphone</label><br />
+    <input id="phone" type="text" formControlName="phone" placeholder="771234567" />
+    @if (form.controls.phone.invalid && form.controls.phone.touched) {
+      <span class="text-danger">Numéro invalide (format attendu : 771234567).</span>
+    }
+  </p>
+
+  <p>
+    <button type="submit">Continuer</button>
+  </p>
+</form>
