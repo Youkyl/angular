@@ -1,27 +1,17 @@
-export type TransactionType = 'DEPOSIT' | 'WITHDRAW' | 'TRANSFER_IN' | 'TRANSFER_OUT' | 'BILL_PAYMENT';
-
-export interface Transaction {
-  id: string;
-  type: TransactionType;
-  amount: number;
-  date: string;
-  description?: string;
-}
+export type PaymentMethod = 'CREDIT_CARD' | 'WALLET_TARGET';
 
 export interface DepositRequest {
   amount: number;
-  description?: string;
+  paymentMethod: PaymentMethod;
 }
 
 export interface WithdrawRequest {
-  walletId: string;
+  phone: string;
   amount: number;
-  description?: string;
 }
 
 export interface TransferRequest {
-  sourcePhone: string;
-  destination: string;
+  senderPhone: string;
+  receiverPhone: string;
   amount: number;
-  description?: string;
 }

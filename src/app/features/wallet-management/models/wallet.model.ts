@@ -1,9 +1,10 @@
 export interface Wallet {
-  id: string;
-  ownerName: string;
+  id: number;
   phone: string;
+  email: string;
   balance: number;
-  createdAt: string;
+  code: string;
+  currency: string;
 }
 
 export interface WalletPage {
@@ -15,6 +16,9 @@ export interface WalletPage {
 }
 
 export interface CreateWalletRequest {
-  ownerName: string;
   phone: string;
+  email: string;
+  initialBalance: number;
+  code: string;
+  currency: string;
 }

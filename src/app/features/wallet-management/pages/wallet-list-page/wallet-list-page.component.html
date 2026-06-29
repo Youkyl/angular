@@ -1,0 +1,42 @@
+<h1>Portefeuilles</h1>
+
+<p>
+  <a routerLink="/admin/wallets/new">Créer un portefeuille</a>
+  &nbsp;|&nbsp;
+  <a routerLink="/admin/wallets/search">Rechercher un client</a>
+</p>
+
+@if (loading()) {
+  <p>Chargement...</p>
+} @else {
+  <table>
+    <thead>
+      <tr>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>Solde</th>
+        <th>Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (wallet of wallets(); track wallet.id) {
+        <tr>
+          <td>{{ wallet.phone | phoneFormat }}</td>
+          <td>{{ wallet.email }}</td>
+          <td>{{ wallet.balance | xof }}</td>
+          <td>{{ wallet.code }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4">Aucun portefeuille.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <p>
+    <button class="secondary" type="button" [disabled]="page() === 0" (click)="goToPreviousPage()">Précédent</button>
+    &nbsp;Page {{ page() + 1 }} / {{ totalPages() || 1 }}&nbsp;
+    <button class="secondary" type="button" [disabled]="page() >= totalPages() - 1" (click)="goToNextPage()">Suivant</button>
+  </p>
+}
